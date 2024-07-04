@@ -117,8 +117,16 @@ public:
 
 		if (!staticBody) {
 			btQuaternion rotationT = phys.getRotation();
-			rotation = func.Quat_to_euler(glm::quat(rotationT.getX(), rotationT.getY(), rotationT.getZ(), rotationT.getW()));
+			glm::quat glmQuat(rotationT.getW(), rotationT.getX(), rotationT.getY(), rotationT.getZ()); // Ensure correct order
+
+			// Try different orders here
+			glm::vec3 euler = func.Quat_to_euler(glmQuat);
+
+			rotation.x = -euler.x;
+			rotation.y = euler.y;
+			rotation.z = euler.z;
 		}
+
 		else {
 			float radiansX = btRadians(rotation.x);
 			float radiansY = btRadians(rotation.y);

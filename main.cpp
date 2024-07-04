@@ -46,11 +46,11 @@ static glm::vec3 Deg(const glm::vec3& radians)
 
 
 //const float WorldRadius = 1750;
-const float WorldRadius = 150;
+const float WorldRadius = 1050;
 const float objectWorldMult = 20;
 
 bool run; 
-bool build = false;
+bool build = true;
 
 
 void saveScreenshot(GLFWwindow* window, const char* filename) {
